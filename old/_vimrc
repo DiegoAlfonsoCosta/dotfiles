@@ -1,0 +1,66 @@
+" =======================
+"         Options
+" =======================
+set scrolloff=5
+set relativenumber
+set showmode
+set showcmd
+set smartcase
+" Use system clipboard (on modern Vim/Neovim prefer unnamedplus)
+if has('clipboard')
+  set clipboard+=unnamed,unnamedplus
+endif
+
+" =======================
+"       Leader key
+" =======================
+let mapleader = " "
+" Keep Space free in normal/visual so it only acts as <Leader>
+nnoremap <Space> <Nop>
+xnoremap <Space> <Nop>
+
+" =======================
+"   Comment toggle  (⌘/ and Ctrl/ in IdeaVim)
+"   Here: <Leader>/ across modes using vim-commentary
+"   :help commentary — https://github.com/tpope/vim-commentary
+" =======================
+" Normal + Visual
+nnoremap <leader>/ :Commentary<CR>
+xnoremap <leader>/ :Commentary<CR>
+" Insert (exit insert, comment, return to insert at end)
+inoremap <leader>/ <Esc>:Commentary<CR>a
+
+" =======================
+"  Leader + e → Project/Explorer tool window
+"  Vim equivalent: netrw file explorer as a left-side pane
+" =======================
+" Open/bring focus to netrw on the left (rough “toggle”)
+nnoremap <leader>e :Lexplore<CR>
+xnoremap <leader>e :Lexplore<CR>
+
+" =======================
+"   Navigate between editor tabs/splits
+" =======================
+" Next/Previous tab (IdeaVim: NextTab/PreviousTab)
+nnoremap <leader>l :tabnext<CR>
+nnoremap <leader>h :tabprevious<CR>
+
+" Cycle editor splits (IdeaVim: Next/Prev Splitter)
+" k = next split (forward), j = previous split (backward)
+nnoremap <leader>k <C-w>w
+nnoremap <leader>j <C-w>W
+
+" Close the current editor tab in VS Code
+nnoremap <leader>w :call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+
+
+" =======================
+"   Goto Declaration / Jump Back
+" =======================
+" Keep your “consistency” mappings:
+"   Leader ] → go to definition (Vim: gd)
+"   Leader [ → jump bac:echo $MYVIMRC (Vim: <C-o>)
+nnoremap <leader>] gd
+nnoremap <leader>[ <C-o>
+
+nnoremap <leader>r :source ~/_vimrc<CR>:echo "Reloaded _vimrc!"<CR>
