@@ -1,0 +1,205 @@
+source ~/.vimrc
+
+" Options
+set clipboard+=unnamedplus
+set ideajoin
+set highlightedyank
+set surround
+set easymotion
+set matchit
+set notimeout
+
+" Better behaviors
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+nmap K <Action>(ShowHoverInfo)
+
+" Break old habits / unwanted shortcuts
+map <A-S-f> <Nop>
+map <C-S-f> <Nop>
+imap <C-n> <Nop>
+imap <C-p> <Nop>
+map <C-n> <Nop>
+
+" Plugin shortcuts
+nmap s <Plug>(easymotion-s)
+xmap s <Plug>(easymotion-s)
+nmap gm <Plug>(MatchitMotion)
+xmap gm <Plug>(MatchitMotion)
+
+" Camel case text object
+nmap vic l[bv]w
+nmap cic l[bv]wc
+nmap dic l[bv]wd
+nmap yic l[bv]wy
+
+" The below is needed because camel case text object mess up `nnoremap c "_c`
+nnoremap ci "_ci
+
+" Split function
+nmap <Leader>sf2 _f(a<CR><Esc>hf,a<CR><Esc>
+nmap <Leader>sf3 _f(a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>
+nmap <Leader>sf4 _f(a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>
+nmap <Leader>sf5 _f(a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>
+nmap <Leader>sf6 _f(a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>
+nmap <Leader>sf7 _f(a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>hf,a<CR><Esc>
+
+" Split chain
+nmap <Leader>sc2 _f(F.i<CR><Esc> f)f.i<CR><Esc>
+nmap <Leader>sc3 _f(F.i<CR><Esc> f)f.i<CR><Esc>f)f.i<CR><Esc>
+nmap <Leader>sc4 _f(F.i<CR><Esc> f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>
+nmap <Leader>sc5 _f(F.i<CR><Esc> f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>
+nmap <Leader>sc6 _f(F.i<CR><Esc> f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>
+nmap <Leader>sc7 _f(F.i<CR><Esc> f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>f)f.i<CR><Esc>
+
+" Split ternary
+nnoremap <Leader>st _f?i<CR><Esc>f:i<CR><Esc>
+
+" Edit config
+map <Leader>ei :e ~/.ideavimrc<CR>
+map <Leader>si :source ~/.ideavimrc<CR>
+
+" General IDE shortcuts
+map gs <Action>(GotoSymbol)
+map gc <Action>(GotoClass)
+map gn <Action>(ReSharperNavigateTo)
+map <C-p> <Action>(GotoFile)
+map <C-e> <Action>(RecentFiles)
+map <Leader>fu <Action>(FindUsages)
+map <Leader>gr <Action>(GotoRelated)
+map <leader>gi <Action>(GotoImplementation)
+map <Leader>ff <Action>(FindInPath)
+map <Leader>re <Action>(RenameElement)
+map <Leader>zc <Action>(CollapseAllRegions)
+map <Leader>zo <Action>(ExpandAllRegions)
+map <Leader>ac <Action>(RiderDebuggerApplyEncChagnes)
+map <Leader>ss <Action>(ShowSettings)
+map <Leader>ao <Action>(SelectAllOccurrences)
+map <Leader>rp <Action>(Replace)
+map <Leader>il <Action>(Inline)
+map <Leader>iv <Action>(IntroduceVariable)
+imap <S-Space> <Action>(CallInlineCompletionAction)
+map <Leader>oe <Action>(RevealIn)
+map <Leader>os <Action>(RecentProjectListGroup)
+map <Leader>cs <Action>(CloseProject)
+map <Leader>ta <Action>(VimFindActionIdAction)
+map <Leader>og :!wt lg<CR>
+map <Leader>ie <Action>(dev.sweep.assistant.components.ShowPromptBarAction)
+map <Leader>oa <Action>(dev.sweep.assistant.actions.NewChatAction)
+
+" Save/Cleanup
+map <C-s> <Action>(SaveAll)
+imap <C-s> <Action>(SaveAll)<Esc>
+map <Leader>fd <Action>(ReformatCode)
+map <Leader>cc <Action>(SilentCodeCleanup)
+map <Leader>oi <Action>(OptimizeImports)
+
+" IDE windows
+map <Leader>sp <Action>(SelectInProjectView)
+map <Leader>op <Action>(ActivateProjectToolWindow)
+map <Leader>of <Action>(ActivateFindToolWindow)
+map <Leader>ot <Action>(ActivateTerminalToolWindow)
+map <Leader>od <Action>(ActivateDebugToolWindow)
+map <Leader>hw <Action>(HideAllWindows)
+map <Leader>oc <Action>(ActivateCommitToolWindow)
+
+" Popups
+map <C-m> <Action>(ShowPopupMenu)
+map <Leader>pi <Action>(ParameterInfo)
+map <Leader>fs <Action>(FileStructurePopup)
+map <Leader>rf <Action>(Refactorings.QuickListPopupAction)
+
+" Editor navigation
+map <Leader>ne <Action>(GotoNextError)
+map <Leader>pe <Action>(GotoPreviousError)
+map [d <Action>(ReSharperGotoPrevErrorInSolution)
+map ]d <Action>(ReSharperGotoNextErrorInSolution)
+map [f <Action>(MethodUp)
+map ]f <Action>(MethodDown)
+
+" Build/Run/Debug
+map <Leader>ba <Action>(BuildWholeSolutionAction)
+map <Leader>ra <Action>(Run)
+map <Leader>da <Action>(Debug)
+map <Leader>sa <Action>(Stop)
+map <Leader>rt <Action>(RiderUnitTestRunContextAction)
+map <Leader>dt <Action>(RiderUnitTestDebugContextAction)
+map <Leader>tb <Action>(ToggleLineBreakpoint)
+map <C-S-A-j> <Action>(StepOver)
+map <C-S-A-k> <Action>(Resume)
+map <C-S-A-h> <Action>(StepOut)
+map <C-S-A-l> <Action>(StepInto)
+map <Leader>ee <Action>(QuickEvaluateExpression)
+
+" Great stuff from VS Code but without arrow keys
+map <A-S-j> <Action>(EditorDuplicateLines)
+map <A-j> <Action>(MoveLineDown)
+map <A-k> <Action>(MoveLineUp)
+map <A-S-h> <Action>(EditorUnSelectWord)
+map <A-S-l> <Action>(EditorSelectWord)
+map <A-C-j> <Action>(EditorCloneCaretBelow)
+map <A-C-k> <Action>(EditorCloneCaretAbove)
+map <A-C-h> <Action>(UnselectPreviousOccurrence)
+map <A-C-l> <Action>(SelectNextOccurrence)
+
+" Tab navigation
+nmap <C-h> <Action>(PreviousTab)
+nmap <C-l> <Action>(NextTab)
+imap <C-h> <Action>(PreviousTab)
+imap <C-l> <Action>(NextTab)
+map <Leader>tc <Action>(CloseContent)
+map <Leader>to <Action>(CloseAllEditorsButActive)
+map <Leader>tp <Action>(PinActiveEditorTab)
+map <Leader>tm <Action>(CloseAllUnmodifiedEditors)
+
+" Window navigation
+nnoremap <Leader>wc <C-W>c
+nnoremap <Leader>wo <C-W>o
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wl <C-W>l
+nnoremap <Leader>ws <C-W>s
+nnoremap <Leader>wv <C-W>v
+
+" Handlers
+sethandler <A-C-J> a:vim
+sethandler <A-C-K> a:vim
+sethandler <A-C-S-H> a:vim
+sethandler <A-S-F> a:vim
+sethandler <A-S-H> a:vim
+sethandler <A-S-L> a:vim
+sethandler <C-2> a:vim
+sethandler <C-;> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-C> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-G> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
+sethandler <C-M> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S-;> a:vim
+sethandler <C-S-F> a:vim
+sethandler <C-S> a:vim
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> a:vim
+sethandler <C-W> a:vim
+sethandler <C-X> a:vim
+sethandler <C-Y> a:vim
+sethandler <C-[> a:vim
+sethandler <C-\> a:vim
+sethandler <C-]> a:vim
+
+" Sweep AI Tab completion mapping
+map <Tab> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>

@@ -1,0 +1,48 @@
+" ----- Options -----
+set scrolloff=5
+set relativenumber
+set showmode
+set showcmd
+set smartcase
+set clipboard+=unnamed
+
+" ----- Comment toggle (⌘/ and Ctrl/) -----
+" Normal + Visual
+nmap <D-/> :action CommentByLineComment<CR>
+vmap <D-/> :action CommentByLineComment<CR>
+imap <D-/> :action CommentByLineComment<CR>
+nmap <C-/> :action CommentByLineComment<CR>
+vmap <C-/> :action CommentByLineComment<CR>
+imap <C-/> :action CommentByLineComment<CR>
+
+" Insert (exit insert, run, stay in normal)
+imap <D-/> <Esc>:action CommentByLineComment<CR>
+imap <C-/> <Esc>:action CommentByLineComment<CR>
+
+" ----- Leader + e → Project tool window -----
+let mapleader = " "
+nmap <leader>e :action ActivateProjectToolWindow<CR>
+vmap <leader>e :action ActivateProjectToolWindow<CR>
+
+" Navigate between editor tabs
+nmap <leader>l :action NextTab<CR>
+nmap <leader>k <Action>(NextSplitter)
+nmap <leader>j <Action>(PrevSplitter)
+nmap <leader>h :action PreviousTab<CR>
+
+
+" Run project with Alt+R
+map <A-r> :action Run<CR>
+
+" Debug project with Alt+D
+map <A-d> :action Debug<CR>
+
+" Close current tab
+nmap <leader>w :action CloseContent<CR>
+
+" Or keep Ctrl/Cmd+] for consistency
+nmap <leader>] :action GotoDeclaration<CR> 
+" Jump back (like <C-o> in Vim)
+nmap <leader>[ :action Back<CR>
+" Sweep AI Tab completion mapping
+map <Tab> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>
