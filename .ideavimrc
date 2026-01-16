@@ -8,6 +8,13 @@ set surround
 set easymotion
 set matchit
 set notimeout
+" Highlight search results
+set hlsearch
+" Show matches as you type
+set incsearch
+" Ignore case unless you type a capital letter
+set ignorecase
+set smartcase
 
 " Better behaviors
 nmap <C-o> <Action>(Back)
@@ -21,9 +28,10 @@ imap <C-n> <Nop>
 imap <C-p> <Nop>
 map <C-n> <Nop>
 
-" Plugin shortcuts
-nmap s <Plug>(easymotion-s)
-xmap s <Plug>(easymotion-s)
+" Clear search highlighting with Leader + Enter
+nnoremap <Leader><CR> :nohlsearch<CR>
+
+" Plgin shortcuts
 nmap gm <Plug>(MatchitMotion)
 xmap gm <Plug>(MatchitMotion)
 
@@ -62,15 +70,16 @@ map <Leader>si :source ~/.ideavimrc<CR>
 " General IDE shortcuts
 map gs <Action>(GotoSymbol)
 map gc <Action>(GotoClass)
-map gn <Action>(ReSharperNavigateTo)
+map gn <Action>(ReSharpepNavigateTo)
 map <C-p> <Action>(GotoFile)
 map <C-e> <Action>(RecentFiles)
 map <Leader>fu <Action>(FindUsages)
 map <Leader>gr <Action>(GotoRelated)
 map <leader>gi <Action>(GotoImplementation)
+map <leader>gd <Action>(GotoDefinition)
 map <Leader>ff <Action>(FindInPath)
 map <Leader>re <Action>(RenameElement)
-map <Leader>zc <Action>(CollapseAllRegions)
+map <Leader>zc <Action>(CollapseAllReions)
 map <Leader>zo <Action>(ExpandAllRegions)
 map <Leader>ac <Action>(RiderDebuggerApplyEncChagnes)
 map <Leader>ss <Action>(ShowSettings)
@@ -141,11 +150,14 @@ map <A-C-j> <Action>(EditorCloneCaretBelow)
 map <A-C-k> <Action>(EditorCloneCaretAbove)
 map <A-C-h> <Action>(UnselectPreviousOccurrence)
 map <A-C-l> <Action>(SelectNextOccurrence)
+map <A-S-a> ggVGy
+map <A-a> ggVG
+
 
 " Tab navigation
 nmap <C-h> <Action>(PreviousTab)
 nmap <C-l> <Action>(NextTab)
-imap <C-h> <Action>(PreviousTab)
+imap <C-h> <Action>(PreviousTab
 imap <C-l> <Action>(NextTab)
 map <Leader>tc <Action>(CloseContent)
 map <Leader>to <Action>(CloseAllEditorsButActive)
