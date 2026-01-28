@@ -16,6 +16,10 @@ set incsearch
 set ignorecase
 set smartcase
 
+"Motion
+map <C-S-j> 5j
+map <C-S-k> 5k
+
 " Better behaviors
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
@@ -76,7 +80,7 @@ map <C-e> <Action>(RecentFiles)
 map <Leader>fu <Action>(FindUsages)
 map <Leader>gr <Action>(GotoRelated)
 map <leader>gi <Action>(GotoImplementation)
-map <leader>gd <Action>(GotoDefinition)
+map <Leader>gd <Action>(GotoDefinition)
 map <Leader>ff <Action>(FindInPath)
 map <Leader>re <Action>(RenameElement)
 map <Leader>zc <Action>(CollapseAllReions)
@@ -139,6 +143,7 @@ map <C-S-A-k> <Action>(Resume)
 map <C-S-A-h> <Action>(StepOut)
 map <C-S-A-l> <Action>(StepInto)
 map <Leader>ee <Action>(QuickEvaluateExpression)
+map <Leader>ac :action ApplyHotReloadChanges<CR>
 
 " Great stuff from VS Code but without arrow keys
 map <A-S-j> <Action>(EditorDuplicateLines)
